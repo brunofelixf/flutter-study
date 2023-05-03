@@ -24,12 +24,12 @@ class MyApp extends StatelessWidget {
           ),
           body: ListView(
             children: const [
-              Task('Estudar Flutter'),
-              Task('Fazer compras'),
-              Task('Malhar'),
-              Task('Correr'),
-              Task('Inglês'),
-              Task('Ler'),
+              Task('Estudar Flutter','https://cdn.dribbble.com/users/1622791/screenshots/11174104/flutter_intro.png'),
+              Task('Fazer compras','https://png.pngtree.com/png-clipart/20221224/original/pngtree-the-flutter-colorful-design-png-image_8801693.png'),
+              Task('Malhar','https://static.wixstatic.com/media/c7bbc3_5f2893d3bdfb4dba8ee69b3cfeea9381~mv2.png/v1/fill/w_288,h_294,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/Grupo%20412.png'),
+              Task('Correr','https://flutterx.com/thumbnails/artifact-8'),
+              Task('Inglês','https://mdevelopers.com/storage/0_flutterheader_0c3ac92d.png'),
+              Task('Ler','https://banner2.cleanpng.com/20180710/xui/kisspng-dart-programming-language-flutter-object-oriented-flutter-logo-5b454ed3adae62.4180922415312688197114.jpg'),
             ],
           ),
           floatingActionButton: FloatingActionButton(onPressed: () {
@@ -41,7 +41,9 @@ class MyApp extends StatelessWidget {
 
 class Task extends StatefulWidget {
   final String nome;
-  const Task(this.nome, {Key? key}) : super(key: key);
+  final String foto;
+
+  const Task(this.nome, this.foto, {Key? key}) : super(key: key);
 
   @override
   State<Task> createState() => _TaskState();
@@ -70,6 +72,12 @@ class _TaskState extends State<Task> {
                         color: Colors.grey,
                         width: 70,
                         height: 100,
+                        child:
+                          Image.network(
+                              widget.foto,
+                              // 'https://cdn.dribbble.com/users/1622791/screenshots/11174104/flutter_intro.png',
+                              fit: BoxFit.cover,
+                          ),
                       ),
                       Container(
                         width: 200,
@@ -79,13 +87,24 @@ class _TaskState extends State<Task> {
                               fontSize: 24, overflow: TextOverflow.ellipsis),
                         ),
                       ),
-                      ElevatedButton(
-                          onPressed: () {
-                            setState(() {
-                              nivel++;
-                            });
-                            print(nivel);
-                          }, child: Icon(Icons.arrow_drop_up))
+                      Container(
+                        width: 52,
+                        height: 52,
+                        child: ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                nivel++;
+                              });
+                              print(nivel);
+                            }, child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Icon(Icons.arrow_drop_up),
+                                Text('UP', style: TextStyle(fontSize: 12),)
+                              ],
+                            )),
+                      )
                     ],
                   ),
                 ),
