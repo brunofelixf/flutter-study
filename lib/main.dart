@@ -24,12 +24,12 @@ class MyApp extends StatelessWidget {
           ),
           body: ListView(
             children: const [
-              Task('Estudar Flutter','https://cdn.dribbble.com/users/1622791/screenshots/11174104/flutter_intro.png'),
-              Task('Fazer compras','https://png.pngtree.com/png-clipart/20221224/original/pngtree-the-flutter-colorful-design-png-image_8801693.png'),
-              Task('Malhar','https://static.wixstatic.com/media/c7bbc3_5f2893d3bdfb4dba8ee69b3cfeea9381~mv2.png/v1/fill/w_288,h_294,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/Grupo%20412.png'),
-              Task('Correr','https://flutterx.com/thumbnails/artifact-8'),
-              Task('Inglês','https://mdevelopers.com/storage/0_flutterheader_0c3ac92d.png'),
-              Task('Ler','https://banner2.cleanpng.com/20180710/xui/kisspng-dart-programming-language-flutter-object-oriented-flutter-logo-5b454ed3adae62.4180922415312688197114.jpg'),
+              Task('Estudar Flutter','https://www.fecaf.com.br/wp-content/uploads/2021/02/estudar-melhor.jpg'),
+              Task('Fazer compras','https://statics-cuidateplus.marca.com/cms/2022-11/compras-compulsivas_0.jpg'),
+              Task('Malhar','https://conteudo.imguol.com.br/c/entretenimento/6a/2019/03/18/musculacao-treino-academia-exercicio-1552946244916_v2_450x600.jpg'),
+              Task('Correr','https://conteudo.imguol.com.br/c/entretenimento/bf/2019/02/27/corrida-subida-montanha-1551295317604_v2_450x600.jpg'),
+              Task('Inglês','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRMmzmA3gxdHN_xPI2cFTGQjWejl3TTuk-_BS_2uZmUHJzVbaBuLr77FIcm4imqCa1b-s&usqp=CAU'),
+              Task('Ler','https://media.newyorker.com/photos/59ee325f1685003c9c28c4ad/master/w_2560%2Cc_limit/Heller-Kirkus-Reviews.jpg'),
             ],
           ),
           floatingActionButton: FloatingActionButton(onPressed: () {
@@ -79,13 +79,28 @@ class _TaskState extends State<Task> {
                               fit: BoxFit.cover,
                           ),
                       ),
-                      Container(
-                        width: 200,
-                        child: Text(
-                          widget.nome,
-                          style: TextStyle(
-                              fontSize: 24, overflow: TextOverflow.ellipsis),
-                        ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            width: 200,
+                            child: Text(
+                              widget.nome,
+                              style: TextStyle(
+                                  fontSize: 24, overflow: TextOverflow.ellipsis),
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              Icon(Icons.star, size: 15, color: Colors.blue),
+                              Icon(Icons.star, size: 15, color: Colors.blue),
+                              Icon(Icons.star, size: 15, color: Colors.blue),
+                              Icon(Icons.star, size: 15, color: Colors.blue[100]),
+                              Icon(Icons.star, size: 15, color: Colors.blue[100]),
+                            ],
+                          )
+                        ],
                       ),
                       Container(
                         width: 52,
