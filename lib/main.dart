@@ -62,24 +62,38 @@ class _TaskState extends State<Task> {
       child: Container(
         child: Stack(
           children: [
-            Container(color: Colors.blue, height: 140),
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(6),
+                color: Colors.blue
+              ),
+                height: 140),
             Column(
               children: [
                 Container(
-                  color: Colors.white,
                   height: 100,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    color: Colors.white
+                  ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
-                        color: Colors.grey,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          color: Colors.grey,
+                        ),
                         width: 70,
                         height: 100,
                         child:
-                          Image.network(
-                              widget.foto,
-                              // 'https://cdn.dribbble.com/users/1622791/screenshots/11174104/flutter_intro.png',
-                              fit: BoxFit.cover,
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(5),
+                            child: Image.network(
+                                widget.foto,
+                                // 'https://cdn.dribbble.com/users/1622791/screenshots/11174104/flutter_intro.png',
+                                fit: BoxFit.cover,
+                            ),
                           ),
                       ),
                       Column(
@@ -111,7 +125,7 @@ class _TaskState extends State<Task> {
                         child: ElevatedButton(
                             onPressed: () {
                               setState(() {
-                                nivel++;
+                                nivel < 10 ? nivel++: nivel;
                               });
                               print(nivel);
                             }, child: Column(
