@@ -3,11 +3,18 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyApp extends StatefulWidget {
+   MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  bool opacidade = true;
 
   @override
   Widget build(BuildContext context) {
@@ -24,19 +31,27 @@ class MyApp extends StatelessWidget {
               child: Text('Tarefas'),
             ),
           ),
-          body: ListView(
-            children: const [
-              Task('Estudar Flutter','https://www.fecaf.com.br/wp-content/uploads/2021/02/estudar-melhor.jpg', 3),
-              Task('Fazer compras','https://statics-cuidateplus.marca.com/cms/2022-11/compras-compulsivas_0.jpg', 5),
-              Task('Malhar','https://conteudo.imguol.com.br/c/entretenimento/6a/2019/03/18/musculacao-treino-academia-exercicio-1552946244916_v2_450x600.jpg', 1),
-              Task('Correr','https://conteudo.imguol.com.br/c/entretenimento/bf/2019/02/27/corrida-subida-montanha-1551295317604_v2_450x600.jpg', 4),
-              Task('Inglês','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRMmzmA3gxdHN_xPI2cFTGQjWejl3TTuk-_BS_2uZmUHJzVbaBuLr77FIcm4imqCa1b-s&usqp=CAU', 3),
-              Task('Ler','https://media.newyorker.com/photos/59ee325f1685003c9c28c4ad/master/w_2560%2Cc_limit/Heller-Kirkus-Reviews.jpg', 5),
-            ],
+          body: AnimatedOpacity(
+            opacity: opacidade ? 1 : 0,
+            duration: Duration(milliseconds: 800),
+            child: ListView(
+              children: const [
+                Task('Estudar Flutter','https://www.fecaf.com.br/wp-content/uploads/2021/02/estudar-melhor.jpg', 3),
+                Task('Fazer compras','https://statics-cuidateplus.marca.com/cms/2022-11/compras-compulsivas_0.jpg', 5),
+                Task('Malhar','https://conteudo.imguol.com.br/c/entretenimento/6a/2019/03/18/musculacao-treino-academia-exercicio-1552946244916_v2_450x600.jpg', 1),
+                Task('Correr','https://conteudo.imguol.com.br/c/entretenimento/bf/2019/02/27/corrida-subida-montanha-1551295317604_v2_450x600.jpg', 4),
+                Task('Inglês','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRMmzmA3gxdHN_xPI2cFTGQjWejl3TTuk-_BS_2uZmUHJzVbaBuLr77FIcm4imqCa1b-s&usqp=CAU', 3),
+                Task('Ler','https://media.newyorker.com/photos/59ee325f1685003c9c28c4ad/master/w_2560%2Cc_limit/Heller-Kirkus-Reviews.jpg', 5),
+              ],
+            ),
           ),
           floatingActionButton: FloatingActionButton(onPressed: () {
-            print('Apertou');
-          }),
+            setState(() {
+              opacidade = !opacidade;
+            });
+          },
+            child: Icon(Icons.remove_red_eye),
+          ),
         ));
   }
 }
